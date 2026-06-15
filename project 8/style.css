@@ -1,0 +1,12 @@
+h1{
+    background-color: red;
+    display: inline;
+}
+h2{
+    background-color: goldenrod;
+    display: inline;
+}
+span{
+    display: block;
+    background-color: green;
+}

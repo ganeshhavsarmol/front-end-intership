@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Tech Conference 2025 - Event Registration Form</h1>
+    <h3>Please fill out the form carefully to complete your registration.</h3>
+
+    <form>
+        <!-- Personal Information -->
+        <fieldset>
+            <legend>Personal Information</legend>
+            <table>
+                <tr>
+                    <td><label for="name">Full Name:</label></td>
+                    <td><input type="text" id="name" placeholder="Enter your full name"></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email Address:</label></td>
+                    <td><input type="email" id="email" placeholder="Enter your email"></td>
+                </tr>
+                <tr>
+                    <td><label for="phone">Phone Number:</label></td>
+                    <td><input type="tel" id="phone" placeholder="Enter your phone number" maxlength="10"></td>
+                </tr>
+                <tr>
+                    <td><label for="address">Address:</label></td>
+                    <td><input type="text" id="address" placeholder="Enter your address"></td>
+                </tr>
+            </table>
+        </fieldset>
+
+        <!-- Professional Details -->
+        <fieldset>
+            <legend>Professional Details</legend>
+            <table>
+                <tr>
+                    <td><label for="occupation">Occupation:</label></td>
+                    <td>
+                        <select id="occupation">
+                            <option value="">Select your occupation</option>
+                            <option value="student">Student</option>
+                            <option value="developer">Developer</option>
+                            <option value="designer">Designer</option>
+                            <option value="manager">Manager</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Experience Level:</label></td>
+                    <td>
+                        <input type="radio" name="exp" value="fresher"> Fresher
+                        <input type="radio" name="exp" value="intermediate"> Intermediate
+                        <input type="radio" name="exp" value="expert"> Expert
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Skills (Select all that apply):</label></td>
+                    <td>
+                        <input type="checkbox" name="skills" value="html"> HTML
+                        <input type="checkbox" name="skills" value="css"> CSS
+                        <input type="checkbox" name="skills" value="js"> JavaScript
+                        <input type="checkbox" name="skills" value="nodejs"> Node.js
+                        <input type="checkbox" name="skills" value="python"> Python
+                        <input type="checkbox" name="skills" value="nextjs"> Next.js
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="org">Current Organization / College:</label></td>
+                    <td><input type="text" id="org" placeholder="Enter organization or college"></td>
+                </tr>
+            </table>
+        </fieldset>
+
+        <!-- Additional Details -->
+        <fieldset>
+            <legend>Additional Details</legend>
+            <table>
+                <tr>
+                    <td><label for="photo">Upload Profile Photo:</label></td>
+                    <td><input type="file" id="photo" accept="image/*"></td>
+                </tr>
+                <tr>
+                    <td><label for="date">Preferred Event Date:</label></td>
+                    <td><input type="date" id="date"></td>
+                </tr>
+                <tr>
+                    <td><label for="why">Why do you want to attend this event?:</label></td>
+                    <td><textarea id="why" cols="35" rows="4" placeholder="Write your answer here..."></textarea></td>
+                </tr>
+                <tr>
+                    <td><label for="hear">How did you hear about us?:</label></td>
+                    <td>
+                        <select id="hear">
+                            <option value="">Select an option</option>
+                            <option value="social">Social Media</option>
+                            <option value="friend">Friend</option>
+                            <option value="google">Google</option>
+                            <option value="email">Email</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+
+        <!-- Terms & Conditions -->
+        <fieldset>
+            <legend>Terms & Conditions</legend>
+            <input type="checkbox" id="terms">
+            <label for="terms">I agree to the Terms & Conditions and Privacy Policy.</label>
+        </fieldset>
+
+        <br>
+        <input type="submit" value="Register Now">
+        <input type="reset" value="Reset">
+    </form>
+</body>
+</html>
