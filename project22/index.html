@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Generator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 50px 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        .btn-container {
+            margin: 30px 0;
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.2s ease;
+        }
+        button:active {
+            transform: scale(0.95);
+        }
+        .btn-asc { 
+            background-color: #2ecc71; 
+            color: white; 
+        }
+        .btn-desc { 
+            background-color: #e74c3c; 
+            color: white; 
+        }
+        .btn-reset { 
+            background-color: #7f8c8d; 
+            color: white; 
+        }
+        button:hover { 
+            opacity: 0.9; 
+        }
+        #result {
+            margin-top: 30px;
+            padding: 20px;
+            font-size: 18px;
+            font-weight: 600;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+            word-wrap: break-word;
+            min-height: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Number Generator Webpage</h2>
+
+    <div class="btn-container">
+        <button class="btn-asc" onclick="showAscending()">Ascending </button>
+        <button class="btn-desc" onclick="showDescending()">Descending</button>
+        <button class="btn-reset" onclick="resetScreen()">Reset</button>
+    </div>
+
+    <div id="result">Buttons par click karein...</div>
+
+    <script>
+        const resultDiv = document.getElementById('result');
+
+        // 1. Ascending Button Logic (1 to 100 Positive)
+        function showAscending() {
+            let numbers = [];
+            for (let i = 1; i <= 100; i++) {
+                numbers.push(i);
+            }
+            resultDiv.innerHTML = numbers.join(', ');
+            resultDiv.style.color = '#27ae60'; // Green color for positive
+        }
+
+        // 2. Descending Button Logic (-1 to -100 Negative)
+        function showDescending() {
+            let numbers = [];
+            for (let i = -1; i >= -100; i--) {
+                numbers.push(i);
+            }
+            resultDiv.innerHTML = numbers.join(', ');
+            resultDiv.style.color = '#c0392b'; // Red color for negative
+        }
+
+        // 3. Reset Button Logic
+        function resetScreen() {
+            resultDiv.innerHTML = 'Buttons par click karein...';
+            resultDiv.style.color = '#333'; // Default color
+        }
+    </script>
+
+</body>
+</html>

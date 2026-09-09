@@ -1,0 +1,41 @@
+#navbar,ul{
+    display: flex;
+    align-items: center;
+justify-content:space-around;
+
+}
+#navbar{background-color: navy;
+    border-radius: 15px;
+    color:white;
+    padding: 0px 10px;
+}
+ul{
+    gap:20px;
+}
+#Zone{ color: yellow;}
+.card{
+     border: 2px solid whitesmoke ;
+     width: 250px;
+     text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+    }
+    #card-container{
+        margin-top: 20px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    button{ 
+        width: 100%;
+        padding: 10px;
+        background-color:navy;
+        color: white;
+        border: none;
+
+    }
+    img{
+        object-fit: contain;
+    }
+   

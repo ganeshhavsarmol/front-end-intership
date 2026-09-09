@@ -1,0 +1,8 @@
+[
+  {"id":1,"name":"Web Development","code":"WD","teacher":"Prof. Sharma","progress":82,"icon":"💻"},
+  {"id":2,"name":"JavaScript","code":"JS","teacher":"Prof. Patil","progress":68,"icon":"⚡"},
+  {"id":3,"name":"Data Structures","code":"DS","teacher":"Prof. Joshi","progress":74,"icon":"🧩"},
+  {"id":4,"name":"Database Management","code":"DBMS","teacher":"Prof. Deshmukh","progress":61,"icon":"🗄️"},
+  {"id":5,"name":"Computer Networks","code":"CN","teacher":"Prof. Kulkarni","progress":55,"icon":"🌐"},
+  {"id":6,"name":"Software Engineering","code":"SE","teacher":"Prof. More","progress":88,"icon":"⚙️"}
+]

@@ -1,0 +1,32 @@
+#main {
+  border: 1px solid grey;
+  border-radius: 10px;
+  overflow: hidden;
+}
+#navbar {
+  background-color: blue;
+  width: 100%;
+  height: 90px;
+  text-align: center;
+  color: rgb(253, 252, 252);
+  justify-self: center;
+  margin-bottom: 20px;
+  margin-top: -22px;
+}
+hr {
+  width: 10%;
+}
+#card {
+  border: 1px solid;
+  width: 250px;
+  padding: 10px;
+  border-radius: 10px;
+  margin-left: 100px;
+}
+img {
+  width: 100%;
+  height: 250px;
+}
+h2 {
+  text-align: center;
+}

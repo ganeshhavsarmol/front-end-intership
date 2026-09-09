@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+<style> 
+#main{
+    display: flex;
+      align-items: center;
+  justify-content: center;
+height: 80vh;
+  /* background-color:hotpink; */
+background-image:  url( https://wallpapercave.com/wp/wp2432866.jpg);
+background-size:cover;
+}
+
+h1{
+
+  color: rgb(245, 5, 5);
+border-radius: 5px;
+font-size: 4rem;
+}
+
+
+.clock-time{
+    display: flex;
+gap: 5px;
+
+}
+h2{
+    font-size: 4rem;
+    color: white;
+}
+
+</style>
+    
+</head>
+<body>
+    <div id="main"  >
+        <div class="clock-time">
+            <h1 id="hour-0">0</h1>
+            <h1 id="hour-1">0</h1>
+        </div>
+        <div><h2>:</h2></div>
+        <div class="clock-time">
+            <h1 id="min-0">0</h1>
+            <h1 id="min-1">0</h1>
+        </div>
+        <div><h2>:</h2></div>
+        <div class="clock-time">
+            <h1 id="sec-0">0</h1>
+            <h1 id="sec-1">0</h1>
+        </div>
+
+    </div>
+
+
+    <script src="java.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="main">
+      <div id="form">
+        <h2>Create New Profile</h2>
+        <p>Fill in the details to add a new user profile</p>
+        <form>
+          <label for=" name"> Full Name</label>
+          <br />
+          <input type="text" placeholder="Enter Full Name" id="name" />
+          <br /><br />
+
+          <label for=" Age"> Age</label>
+          <br />
+          <input type="number" placeholder="Enter Age" id="age" />
+          <br />
+          <br />
+          <label for=" profession"> Profession</label>
+          <br />
+          <input type="text" placeholder="Enter Profession" id="profession" />
+          <br /><br />
+
+          <label for=" city"> City</label>
+          <br />
+          <input type="text" placeholder="Enter City" id="city" />
+          <br /><br />
+
+          <label for="image"> Profile image URL</label>
+          <br />
+          <input type="text" placeholder="Enter Image URL" id="profileimage" />
+          <br /><br />
+
+          <label for="Bio"> Bio</label>
+          <br />
+          <textarea
+            id="bio"
+            rows="5px"
+            cols="40px"
+            id="bio"
+            placeholder="Write a short bio about the user ..."
+          ></textarea>
+          <br />
+          <br />
+          <button id="submit">+ Add Profile</button>
+          <br />
+          <button id="btn-2" type="reset">Reset Form</button>
+        </form>
+      </div>
+
+      <div id="right">
+        <div id="right-main">
+          <div>
+            <h2>All Profiles</h2>
+            <p>Here are all the user profile you've created.</p>
+          </div>
+          <div>
+            <span
+              style="
+                background-color: rgb(247, 219, 247);
+                border: 1px solid rgb(43, 3, 43);
+                color: rgb(43, 3, 43);
+                border-radius: 5px;
+                padding: 4px;
+              "
+            >
+              Total Profiles: <span id="profileNo">0</span></span
+            >
+            <button id="btn-3">Clear All</button>
+          </div>
+        </div>
+         <div id="card"></div> 
+         <!-- <div id="card">
+          <div class="card-top">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST1S3xpKEtXmoftMwSzJB8Ff-qHikidXvaZPPpdzxKlRksA761veR7wGI&s=10"
+              alt=" profile image"
+            />
+            <h3>Name</h3>
+            <span
+              class="card-profession"
+              style="
+                background-color: rgb(247, 197, 247);
+                color: purple;
+                border-radius: 7px;
+                padding: 10px;
+              "
+              >Profession</span
+            >
+          </div>
+          <div class="class-info-div">
+            <p>
+              <span class="info">📆 Age: 20</span>
+              <br />
+              <span class="info">🛄 Profession:web devepoler </span>
+              <br />
+              <span class="info">📍 City: pune</span>
+              <br />
+              <span class="info">ℹ️ Bio: hii this  </span>
+            </p>
+          </div>
+          <button class="btn-4">Delete</button>
+        </div>  -->
+      </div>
+    </div>
+
+    <script src="javascript.js"></script>
+  </body>
+</html>

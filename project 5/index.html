@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forkful — Food Delivery</title>
+<style>
+  :root {
+    --bg: #faf7f2;
+    --card: #ffffff;
+    --ink: #2b2320;
+    --muted: #8a7f78;
+    --accent: #e85d2f;
+    --accent-dark: #c94a1f;
+    --green: #2e9e5b;
+    --radius: 16px;
+    --shadow: 0 2px 12px rgba(43,35,32,.08);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(250,247,242,.9);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #eee4dc;
+  }
+  .header-inner {
+    max-width: 1100px; margin: 0 auto;
+    padding: 14px 20px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .logo { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; }
+  .logo span { color: var(--accent); }
+  .search {
+    flex: 1; max-width: 420px;
+    padding: 10px 16px;
+    border: 1px solid #e5d9cf;
+    border-radius: 999px;
+    font-size: .95rem;
+    background: var(--card);
+    outline: none;
+  }
+  .search:focus { border-color: var(--accent); }
+  .cart-btn {
+    position: relative;
+    background: var(--accent); color: #fff;
+    border: none; border-radius: 999px;
+    padding: 10px 20px;
+    font-size: .95rem; font-weight: 600;
+    cursor: pointer;
+    transition: background .15s;
+  }
+  .cart-btn:hover { background: var(--accent-dark); }
+  .cart-count {
+    position: absolute; top: -6px; right: -6px;
+    background: var(--ink); color: #fff;
+    font-size: .7rem; font-weight: 700;
+    min-width: 20px; height: 20px;
+    border-radius: 999px;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0 4px;
+  }
+  main { max-width: 1100px; margin: 0 auto; padding: 24px 20px 80px; }
+  .hero {
+    background: linear-gradient(120deg, #ffe8dd, #fff6ee);
+    border-radius: var(--radius);
+    padding: 36px 32px;
+    margin-bottom: 28px;
+  }
+  .hero h1 { font-size: 2rem; letter-spacing: -1px; }
+  .hero p { color: var(--muted); margin-top: 6px; }
+  .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .chip {
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 1px solid #e5d9cf;
+    background: var(--card);
+    font-size: .9rem; font-weight: 500;
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .chip.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 18px;
+  }
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: transform .15s;
+  }
+  .card:hover { transform: translateY(-3px); }
+  .card-img {
+    height: 150px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3.5rem;
+    background: #f3ece4;
+  }
+  .card-body { padding: 14px 16px 16px; flex: 1; display: flex; flex-direction: column; }
+  .card-top { display: flex; justify-content: space-between; align-items: start; gap: 8px; }
+  .card-title { font-weight: 700; font-size: 1.02rem; }
+  .rating {
+    font-size: .8rem; font-weight: 700;
+    background: #eaf7ef; color: var(--green);
+    padding: 3px 8px; border-radius: 999px;
+    white-space: nowrap;
+  }
+  .card-desc { color: var(--muted); font-size: .85rem; margin-top: 4px; flex: 1; }
+  .card-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 12px;
+  }
+  .price { font-weight: 800; font-size: 1.05rem; }
+  .add-btn {
+    background: var(--accent); color: #fff;
+    border: none; border-radius: 10px;
+    padding: 8px 14px; font-weight: 600; font-size: .88rem;
+    cursor: pointer; transition: background .15s;
+  }
+  .add-btn:hover { background: var(--accent-dark); }
+  .empty { text-align: center; color: var(--muted); padding: 60px 0; font-size: 1.05rem; }
+
+  .overlay {
+    position: fixed; inset: 0;
+    background: rgba(43,35,32,.45);
+    display: none; align-items: center; justify-content: center;
+    padding: 20px; z-index: 50;
+  }
+  .overlay.open { display: flex; }
+  .modal {
+    background: var(--card);
+    border-radius: var(--radius);
+    width: 100%; max-width: 440px;
+    max-height: 85vh; overflow-y: auto;
+    padding: 24px;
+  }
+  .modal h2 { font-size: 1.3rem; margin-bottom: 16px; }
+  .cart-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0e8e0;
+  }
+  .cart-item .ci-name { font-weight: 600; font-size: .95rem; }
+  .cart-item .ci-price { color: var(--muted); font-size: .85rem; }
+  .qty { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+  .qty button {
+    width: 26px; height: 26px;
+    border: 1px solid #e5d9cf; background: var(--card);
+    border-radius: 8px; cursor: pointer; font-weight: 700;
+  }
+  .qty button:hover { border-color: var(--accent); color: var(--accent); }
+  .cart-total {
+    display: flex; justify-content: space-between;
+    font-weight: 800; font-size: 1.1rem;
+    padding: 16px 0 8px;
+  }
+  .checkout-btn {
+    width: 100%;
+    background: var(--accent); color: #fff;
+    border: none; border-radius: 12px;
+    padding: 13px; font-size: 1rem; font-weight: 700;
+    cursor: pointer;
+  }
+  .checkout-btn:hover { background: var(--accent-dark); }
+  .checkout-btn:disabled { background: #d8cfc8; cursor: not-allowed; }
+  .success {
+    text-align: center; padding: 30px 10px;
+  }
+  .success .big { font-size: 3rem; }
+  .success h3 { margin: 10px 0 6px; }
+  .success p { color: var(--muted); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">🍴 Fork<span>ful</span></div>
+    <input class="search" id="search" type="text" placeholder="Search dishes…">
+    <button class="cart-btn" id="cartOpen">Cart <span class="cart-count" id="cartCount">0</span></button>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <h1>Hungry? We've got you.</h1>
+    <p>Fresh meals delivered in 30 minutes or less.</p>
+  </div>
+  <div class="filters" id="filters"></div>
+  <div class="grid" id="menu"></div>
+  <div class="empty" id="empty" style="display:none">No dishes match your search 😕</div>
+</main>
+
+<div class="overlay" id="overlay">
+  <div class="modal" id="modal"></div>
+</div>
+
+<script>
+const MENU = [
+  { id: 1, name: "Margherita Pizza", desc: "Classic tomato, mozzarella & basil", price: 9.99, cat: "Pizza", rating: 4.7, emoji: "🍕" },
+  { id: 2, name: "Pepperoni Pizza", desc: "Double pepperoni, extra cheese", price: 12.49, cat: "Pizza", rating: 4.8, emoji: "🍕" },
+  { id: 3, name: "Cheeseburger", desc: "Flame-grilled beef, cheddar, pickles", price: 8.49, cat: "Burgers", rating: 4.6, emoji: "🍔" },
+  { id: 4, name: "Double Bacon Burger", desc: "Two patties, crispy bacon, smoky sauce", price: 11.99, cat: "Burgers", rating: 4.9, emoji: "🍔" },
+  { id: 5, name: "Sushi Platter", desc: "12-piece assortment with wasabi & ginger", price: 18.99, cat: "Sushi", rating: 4.8, emoji: "🍣" },
+  { id: 6, name: "Salmon Roll", desc: "Fresh salmon, avocado, cucumber", price: 10.49, cat: "Sushi", rating: 4.6, emoji: "🍣" },
+  { id: 7, name: "Spaghetti Carbonara", desc: "Creamy sauce, pancetta, parmesan", price: 11.49, cat: "Pasta", rating: 4.5, emoji: "🍝" },
+  { id: 8, name: "Penne Arrabiata", desc: "Spicy tomato sauce with basil", price: 9.99, cat: "Pasta", rating: 4.4, emoji: "🍝" },
+  { id: 9, name: "Garden Salad", desc: "Mixed greens, cherry tomatoes, vinaigrette", price: 6.99, cat: "Salads", rating: 4.3, emoji: "🥗" },
+  { id: 10, name: "Caesar Salad", desc: "Romaine, croutons, parmesan, caesar dressing", price: 7.99, cat: "Salads", rating: 4.5, emoji: "🥗" },
+  { id: 11, name: "Chocolate Lava Cake", desc: "Warm molten center with vanilla ice cream", price: 5.99, cat: "Desserts", rating: 4.9, emoji: "🍫" },
+  { id: 12, name: "Cheesecake Slice", desc: "New York style with berry compote", price: 5.49, cat: "Desserts", rating: 4.7, emoji: "🍰" },
+  { id: 13, name: "Iced Latte", desc: "Double espresso over cold milk & ice", price: 3.99, cat: "Drinks", rating: 4.6, emoji: "🥤" },
+  { id: 14, name: "Fresh Orange Juice", desc: "Freshly squeezed, no added sugar", price: 3.49, cat: "Drinks", rating: 4.5, emoji: "🧃" },
+];
+
+const CATS = ["All", ...new Set(MENU.map(m => m.cat))];
+
+let cart = {};      // id -> qty
+let activeCat = "All";
+let query = "";
+
+const menuEl = document.getElementById("menu");
+const emptyEl = document.getElementById("empty");
+const filtersEl = document.getElementById("filters");
+const cartCountEl = document.getElementById("cartCount");
+const overlay = document.getElementById("overlay");
+const modal = document.getElementById("modal");
+
+function renderFilters() {
+  filtersEl.innerHTML = CATS.map(c =>
+    `<button class="chip ${c === activeCat ? "active" : ""}" data-cat="${c}">${c}</button>`
+  ).join("");
+}
+
+function renderMenu() {
+  const q = query.toLowerCase();
+  const items = MENU.filter(m =>
+    (activeCat === "All" || m.cat === activeCat) &&
+    (m.name.toLowerCase().includes(q) || m.desc.toLowerCase().includes(q))
+  );
+  emptyEl.style.display = items.length ? "none" : "block";
+  menuEl.innerHTML = items.map(m => `
+    <div class="card">
+      <div class="card-img">${m.emoji}</div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-title">${m.name}</div>
+          <div class="rating">★ ${m.rating}</div>
+        </div>
+        <div class="card-desc">${m.desc}</div>
+        <div class="card-bottom">
+          <div class="price">$${m.price.toFixed(2)}</div>
+          <button class="add-btn" data-id="${m.id}">Add +</button>
+        </div>
+      </div>
+    </div>
+  `).join("");
+}
+
+function renderCartCount() {
+  const total = Object.values(cart).reduce((a, b) => a + b, 0);
+  cartCountEl.textContent = total;
+}
+
+function openCart() {
+  const entries = Object.entries(cart);
+  if (!entries.length) {
+    modal.innerHTML = `
+      <h2>Your Cart</h2>
+      <div class="empty">Your cart is empty 🛒</div>
+      <button class="checkout-btn" onclick="closeCart()">Browse Menu</button>`;
+  } else {
+    let subtotal = 0;
+    const rows = entries.map(([id, qty]) => {
+      const item = MENU.find(m => m.id === +id);
+      subtotal += item.price * qty;
+      return `
+        <div class="cart-item">
+          <div>${item.emoji}</div>
+          <div>
+            <div class="ci-name">${item.name}</div>
+            <div class="ci-price">$${item.price.toFixed(2)} each</div>
+          </div>
+          <div class="qty">
+            <button onclick="changeQty(${item.id}, -1)">−</button>
+            <span>${qty}</span>
+            <button onclick="changeQty(${item.id}, 1)">+</button>
+          </div>
+        </div>`;
+    }).join("");
+    const delivery = subtotal >= 25 ? 0 : 2.99;
+    modal.innerHTML = `
+      <h2>Your Cart</h2>
+      ${rows}
+      <div class="cart-total"><span>Subtotal</span><span>$${subtotal.toFixed(2)}</span></div>
+      <div class="cart-item" style="border:none"><span style="color:var(--muted)">Delivery</span>
+        <span style="margin-left:auto;font-weight:600">${delivery === 0 ? "FREE" : "$" + delivery.toFixed(2)}</span></div>
+      <div class="cart-total"><span>Total</span><span>$${(subtotal + delivery).toFixed(2)}</span></div>
+      <button class="checkout-btn" onclick="checkout()">Place Order</button>`;
+  }
+  overlay.classList.add("open");
+}
+
+function closeCart() {
+  overlay.classList.remove("open");
+}
+
+function checkout() {
+  const orderId = Math.floor(100000 + Math.random() * 900000);
+  cart = {};
+  renderCartCount();
+  modal.innerHTML = `
+    <div class="success">
+      <div class="big">🎉</div>
+      <h3>Order Confirmed!</h3>
+      <p>Order #${orderId} is on its way.<br>Estimated delivery: 30 minutes.</p>
+      <br>
+      <button class="checkout-btn" onclick="closeCart()">Done</button>
+    </div>`;
+}
+
+function changeQty(id, delta) {
+  cart[id] = (cart[id] || 0) + delta;
+  if (cart[id] <= 0) delete cart[id];
+  renderCartCount();
+  openCart();
+}
+
+filtersEl.addEventListener("click", e => {
+  const btn = e.target.closest(".chip");
+  if (!btn) return;
+  activeCat = btn.dataset.cat;
+  renderFilters();
+  renderMenu();
+});
+
+menuEl.addEventListener("click", e => {
+  const btn = e.target.closest(".add-btn");
+  if (!btn) return;
+  const id = +btn.dataset.id;
+  cart[id] = (cart[id] || 0) + 1;
+  renderCartCount();
+  btn.textContent = "Added ✓";
+  setTimeout(() => { btn.textContent = "Add +"; }, 700);
+});
+
+document.getElementById("cartOpen").addEventListener("click", openCart);
+document.getElementById("search").addEventListener("input", e => {
+  query = e.target.value;
+  renderMenu();
+});
+overlay.addEventListener("click", e => {
+  if (e.target === overlay) closeCart();
+});
+
+renderFilters();
+renderMenu();
+renderCartCount();
+</script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Favorite Place</title>
+  <!-- <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+
+    /* NAVBAR */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      position: absolute;
+      width: 100%;
+      z-index: 10;
+    }
+    .logo { color: white; font-size: 20px; font-weight: bold; }
+    .nav-links a { color: white; text-decoration: none; margin-left: 25px; font-size: 15px; }
+    .nav-links a.active { border-bottom: 2px solid white; }
+    .plan-btn {
+      background-color: #f5c518;
+      border: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 500px;
+      background-image: url('your-hero-image.jpg');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      padding: 0 60px;
+    }
+    .hero-text h3 { color: white; font-size: 22px; }
+    .hero-text h1 { color: white; font-size: 80px; font-weight: bold; line-height: 1; }
+    .hero-text p { color: white; font-size: 16px; margin: 15px 0; max-width: 450px; }
+    .hero-buttons { display: flex; gap: 15px; margin-top: 20px; }
+    .btn-yellow { background-color: #f5c518; border: none; padding: 12px 25px; font-weight: bold; cursor: pointer; border-radius: 5px; }
+    .btn-outline { background-color: transparent; border: 2px solid white; color: white; padding: 12px 25px; cursor: pointer; border-radius: 5px; }
+
+    /* FEATURES BAR */
+    .features {
+      display: flex;
+      justify-content: space-around;
+      background-color: white;
+      padding: 20px 40px;
+      margin: -40px 40px 0;
+      border-radius: 12px;
+      position: relative;
+      z-index: 5;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .feature-item { display: flex; align-items: center; gap: 15px; }
+    .feature-icon { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+    .feature-item h4 { font-size: 15px; }
+    .feature-item p { color: grey; font-size: 13px; max-width: 150px; }
+
+    /* MAIN SECTION */
+    .main-section {
+      display: flex;
+      gap: 20px;
+      margin: 40px 40px;
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    /* ABOUT */
+    .about { display: flex; flex-direction: column; gap: 15px; flex: 1; }
+    .about h2 { font-size: 22px; }
+    .about span { border-bottom: 3px solid #f5c518; display: inline-block; padding-bottom: 4px; }
+    .about p { color: #444; font-size: 14px; line-height: 1.6; }
+    .about img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; }
+    .read-btn { background-color: #f5c518; border: none; padding: 10px 20px; font-weight: bold; cursor: pointer; border-radius: 5px; width: fit-content; }
+
+    /* TOP THINGS */
+    .things { flex: 1; border-left: 1px solid #eee; border-right: 1px solid #eee; padding: 0 20px; }
+    .things h2 { font-size: 20px; margin-bottom: 10px; }
+    .things span { border-bottom: 3px solid #f5c518; display: inline-block; padding-bottom: 4px; }
+    .things ul { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
+    .things ul li { color: #333; font-size: 14px; }
+
+    /* TRAVEL INFO */
+    .travel { flex: 1; padding-left: 10px; }
+    .travel h2 { font-size: 20px; margin-bottom: 10px; }
+    .travel span { border-bottom: 3px solid #f5c518; display: inline-block; padding-bottom: 4px; }
+    .travel table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+    .travel table td { padding: 8px 5px; font-size: 13px; color: #444; border-bottom: 1px solid #f0f0f0; }
+    .travel table td:first-child { font-weight: bold; color: #333; }
+
+    /* STATS BAR */
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      background-color: #1a2332;
+      padding: 25px 40px;
+      margin: 0 40px 40px;
+      border-radius: 12px;
+    }
+    .stat-item { display: flex; align-items: center; gap: 15px; color: white; }
+    .stat-item h3 { font-size: 20px; }
+    .stat-item p { font-size: 13px; color: #aaa; }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">⛰️ My Favorite Place</div>
+  <div class="nav-links">
+    <a href="#" class="active">Home</a>
+    <a href="#">About</a>
+    <a href="#">Things to Do</a>
+    <a href="#">Gallery</a>
+    <a href="#">Travel Info</a>
+    <a href="#">Contact</a>
+  </div>
+  <button class="plan-btn">Plan Your Trip</button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <h3>Discover</h3>
+    <h1>Manali</h1>
+    <p>A paradise in the Himalayas! Snow-capped mountains, serene valleys, and unforgettable experiences await you.</p>
+    <div class="hero-buttons">
+      <button class="btn-yellow">Explore More →</button>
+      <button class="btn-outline">See Gallery 🖼️</button>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES BAR -->
+<div class="features">
+  <div class="feature-item">
+    <div class="feature-icon" style="background-color: #e8f5e9;">🏔️</div>
+    <div><h4>Beautiful Mountains</h4><p>Breathtaking views of the majestic Himalayas.</p></div>
+  </div>
+  <div class="feature-item">
+    <div class="feature-icon" style="background-color: #e3f2fd;">🌲</div>
+    <div><h4>Peaceful Nature</h4><p>Green valleys, rivers, and fresh mountain air.</p></div>
+  </div>
+  <div class="feature-item">
+    <div class="feature-icon" style="background-color: #fff8e1;">📷</div>
+    <div><h4>Adventure Activities</h4><p>Trekking, rafting, skiing and much more.</p></div>
+  </div>
+  <div class="feature-item">
+    <div class="feature-icon" style="background-color: #fce4ec;">🤍</div>
+    <div><h4>Memorable Experience</h4><p>Create memories that lasts a lifetime.</p></div>
+  </div>
+</div>
+
+<!-- MAIN SECTION -->
+<div class="main-section">
+
+  <!-- ABOUT -->
+  <div class="about">
+    <h2><span>About</span> Manali</h2>
+    <p>Manali is a beautiful hill station in Himachal Pradesh, India. It is famous for its scenic beauty, pleasant weather, adventure sports, and warm hospitality.</p>
+    <p>Whether you are a nature lover or an adventure seeker, Manali has something for everyone!</p>
+    <button class="read-btn">Read More</button>
+    <img src="https://images.pexels.com/photos/21327699/pexels-photo-21327699.jpeg" alt="Manali">
+  </div>
+
+  <!-- TOP THINGS TO DO -->
+  <div class="things">
+    <h2><span>Top Things</span> to Do</h2>
+    <ul>
+      <li>🏔️ Visit Solang Valley</li>
+      <li>🚗 Explore Rohtang Pass</li>
+      <li>🌊 Enjoy River Rafting</li>
+      <li>🥾 Trek to Beas Kund</li>
+      <li>🛕 Visit Hadimba Temple</li>
+    </ul>
+  </div>
+
+  <!-- TRAVEL INFO -->
+  <div class="travel">
+    <h2><span>Travel</span> Information</h2>
+    <table>
+      <tr><td>📅 Best Time to Visit</td><td>March to June, Sept to Feb</td></tr>
+      <tr><td>🌡️ Average Temperature</td><td>10°C to 25°C</td></tr>
+      <tr><td>💰 Budget (Per Day)</td><td>₹1,500 – ₹3,000</td></tr>
+      <tr><td>🌐 Languages</td><td>Hindi, English</td></tr>
+      <tr><td>✈️ Nearest Airport</td><td>Kullu–Manali Airport (52 km)</td></tr>
+    </table>
+  </div>
+
+</div>
+
+<!-- STATS BAR -->
+<div class="stats">
+  <div class="stat-item"><span style="font-size:28px;">📍</span><div><h3>Located in</h3><p>Himachal Pradesh, India</p></div></div>
+  <div class="stat-item"><span style="font-size:28px;">👥</span><div><h3>2M+</h3><p>Happy Travelers</p></div></div>
+  <div class="stat-item"><span style="font-size:28px;">📷</span><div><h3>100+</h3><p>Top Attractions</p></div></div>
+  <div class="stat-item"><span style="font-size:28px;">❤️</span><div><h3>4.8/5</h3><p>Traveler Rating</p></div></div>
+</body>
+</html> -->
