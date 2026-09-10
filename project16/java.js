@@ -80,7 +80,7 @@
 
 // let  title = "the dark knight"
 
-// function sahil(title){
+// function ganeshh(title){
 //   let name = title.split(" ")
 // let str = "" 
 // name.map((item,index)=>{
@@ -90,7 +90,7 @@
 //   console.log(str);
   
 // }
-// sahil(title)
+// ganeshh(title)
 
 
 // let marks = [45,78,60,91];
@@ -118,7 +118,7 @@
 // TASK 8/
 
 
-// let name = "Shaikh Sahil";
+// let name = "Avsarmol Ganesh";
 // let birthYear = 2006;
 // function userName(name,birthYear){
 // let splitArr = name.split(" ");
