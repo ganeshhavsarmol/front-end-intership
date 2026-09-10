@@ -1,6 +1,0 @@
-[
-  {"id":1,"title":"React Components","subject":"Web Development","date":"Sep 02, 2026","content":"Components are reusable building blocks of a React application."},
-  {"id":2,"title":"Array Methods","subject":"JavaScript","date":"Sep 01, 2026","content":"map, filter and reduce are useful JavaScript array methods."},
-  {"id":3,"title":"Stack and Queue","subject":"Data Structures","date":"Aug 30, 2026","content":"Stack follows LIFO while Queue follows FIFO."},
-  {"id":4,"title":"SQL Basics","subject":"Database Management","date":"Aug 28, 2026","content":"SELECT, INSERT, UPDATE and DELETE are common SQL operations."}
-]
