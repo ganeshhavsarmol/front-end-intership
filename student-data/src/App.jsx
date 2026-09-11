@@ -29,6 +29,7 @@ const BRANCHES = ["CSE", "IT", "ENTC"];
 const demoStudents = [
   {
     id: "STU001",
+    enrollmentNo: "ENR001",
     name: "Aarav Patil",
     rollNo: "101",
     branch: "CSE",
@@ -39,6 +40,7 @@ const demoStudents = [
   },
   {
     id: "STU002",
+    enrollmentNo: "ENR002",
     name: "Sneha Shinde",
     rollNo: "102",
     branch: "IT",
@@ -49,6 +51,7 @@ const demoStudents = [
   },
   {
     id: "STU003",
+    enrollmentNo: "ENR003",
     name: "Rohit Pawar",
     rollNo: "103",
     branch: "ENTC",
@@ -59,6 +62,7 @@ const demoStudents = [
   },
   {
     id: "STU004",
+    enrollmentNo: "ENR004",
     name: "Priya Jadhav",
     rollNo: "201",
     branch: "CSE",
@@ -69,6 +73,7 @@ const demoStudents = [
   },
   {
     id: "STU005",
+    enrollmentNo: "ENR005",
     name: "Om Deshmukh",
     rollNo: "202",
     branch: "IT",
@@ -79,6 +84,7 @@ const demoStudents = [
   },
   {
     id: "STU006",
+    enrollmentNo: "ENR006",
     name: "Neha More",
     rollNo: "203",
     branch: "ENTC",
@@ -89,6 +95,7 @@ const demoStudents = [
   },
   {
     id: "STU007",
+    enrollmentNo: "ENR007",
     name: "Aditya Kulkarni",
     rollNo: "301",
     branch: "CSE",
@@ -99,6 +106,7 @@ const demoStudents = [
   },
   {
     id: "STU008",
+    enrollmentNo: "ENR008",
     name: "Isha Joshi",
     rollNo: "302",
     branch: "IT",
@@ -109,6 +117,7 @@ const demoStudents = [
   },
   {
     id: "STU009",
+    enrollmentNo: "ENR009",
     name: "Vivek Pawar",
     rollNo: "303",
     branch: "ENTC",
@@ -119,6 +128,7 @@ const demoStudents = [
   },
   {
     id: "STU010",
+    enrollmentNo: "ENR010",
     name: "Kunal Wankhede",
     rollNo: "304",
     branch: "CSE",
@@ -131,6 +141,7 @@ const demoStudents = [
 
 const blankForm = {
   name: "",
+  enrollmentNo: "",
   rollNo: "",
   branch: "CSE",
   year: "1st Year",
@@ -175,7 +186,7 @@ function App() {
     return students.filter((s) => {
       const matchesSearch =
         !q ||
-        [s.name, s.rollNo, s.email, s.branch, s.year, s.city].some((v) =>
+        [s.name, s.enrollmentNo, s.rollNo, s.email, s.branch, s.year, s.city].some((v) =>
           String(v).toLowerCase().includes(q),
         );
       const matchesYear = yearFilter === "All Years" || s.year === yearFilter;
@@ -210,9 +221,9 @@ function App() {
   function saveStudent(e) {
     e.preventDefault();
     setError("");
-    const required = ["name", "rollNo", "phone"];
+    const required = ["name", "enrollmentNo", "rollNo", "phone"];
     if (required.some((k) => !form[k].trim())) {
-      setError("Name, Roll Number and Phone are required.");
+      setError("Name, Enrollment Number, Roll Number and Phone are required.");
       return;
     }
     if (!/^\d{10}$/.test(form.phone.trim())) {
@@ -221,6 +232,16 @@ function App() {
     }
     if (form.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
       setError("Please enter a valid email address.");
+      return;
+    }
+    const duplicateEnrollment = students.some(
+      (s) =>
+        s.enrollmentNo?.trim().toLowerCase() ===
+          form.enrollmentNo.trim().toLowerCase() &&
+        s.id !== selected?.id,
+    );
+    if (duplicateEnrollment) {
+      setError("This Enrollment Number already exists.");
       return;
     }
     const duplicate = students.some(
@@ -376,7 +397,7 @@ function App() {
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search name, roll no, email..."
+                placeholder="Search name, enrollment no, roll no, email..."
               />
               {search && (
                 <button onClick={() => setSearch("")}>
@@ -414,6 +435,7 @@ function App() {
               <thead>
                 <tr>
                   <th>Student</th>
+                  <th>Enrollment No.</th>
                   <th>Roll No.</th>
                   <th>Branch</th>
                   <th>Year</th>
@@ -436,6 +458,7 @@ function App() {
                           </div>
                         </div>
                       </td>
+                      <td>{s.enrollmentNo}</td>
                       <td>{s.rollNo}</td>
                       <td>
                         <span className="badge branch">{s.branch}</span>
@@ -476,7 +499,7 @@ function App() {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="6" className="empty">
+                    <td colSpan="7" className="empty">
                       No students found.
                     </td>
                   </tr>
@@ -552,7 +575,7 @@ function App() {
                   <div>
                     <h3>{selected.name}</h3>
                     <p>
-                      {selected.id} • Roll No. {selected.rollNo}
+                      {selected.id} • Enrollment No. {selected.enrollmentNo} • Roll No. {selected.rollNo}
                     </p>
                   </div>
                 </div>
@@ -580,6 +603,11 @@ function App() {
                   />
                   <Info
                     icon={<Hash />}
+                    label="Enrollment Number"
+                    value={selected.enrollmentNo || "Not provided"}
+                  />
+                  <Info
+                    icon={<Hash />}
                     label="Roll Number"
                     value={selected.rollNo}
                   />
@@ -595,6 +623,15 @@ function App() {
                       value={form.name}
                       onChange={updateField}
                       placeholder="Enter student name"
+                    />
+                  </label>
+                  <label>
+                    Enrollment Number
+                    <input
+                      name="enrollmentNo"
+                      value={form.enrollmentNo}
+                      onChange={updateField}
+                      placeholder="e.g. ENR2026001"
                     />
                   </label>
                   <label>
