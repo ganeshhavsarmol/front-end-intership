@@ -1,0 +1,20 @@
+SUPABASE + VERCEL SETUP
+
+1. Create a Supabase project at https://supabase.com/dashboard
+2. Open SQL Editor and run ALL of supabase.sql.
+3. Go to Supabase -> Settings -> API Keys and copy Project URL and Publishable key.
+4. In Vercel: Project -> Settings -> Environment Variables. Add:
+   VITE_SUPABASE_URL = your Project URL
+   VITE_SUPABASE_PUBLISHABLE_KEY = your Publishable key
+5. Redeploy the Vercel project.
+
+LOCAL TESTING
+Create .env.local in the project root with the same two variables, then run:
+   npm install
+   npm run dev
+
+IMPORTANT
+- Do NOT use the Supabase Secret key in this frontend project.
+- This simple version intentionally uses public RLS policies, so anyone who can access the site can add/edit/delete records.
+- The app polls Supabase every 3 seconds so changes made by one user appear for other users automatically.
+- For a real production/college deployment, add Supabase Auth and restrict write/delete permissions.
