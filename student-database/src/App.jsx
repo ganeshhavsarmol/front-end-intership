@@ -345,8 +345,7 @@ function Modal({ form, setForm, editing, save, close }) {
                 onChange={(e) => setForm({ ...form, branch: e.target.value })}
               >
                 <option>CSE</option>
-                <option>IT</option>
-                <option>ENTC</option>
+                
               </select>
             </label>
             <label>
