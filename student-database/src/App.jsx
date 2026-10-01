@@ -136,8 +136,7 @@ export default function App() {
         <section className="stats">
           <Stat title="Total Students" value={students.length} />
           <Stat title="CSE Students" value={count("CSE")} />
-          <Stat title="IT Students" value={count("IT")} />
-          <Stat title="ENTC Students" value={count("ENTC")} />
+          
         </section>
         <section className="card">
           <div className="head">

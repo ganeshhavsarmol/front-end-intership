@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timetable | Student Portal</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<div class="app"><aside class="sidebar" id="sidebar"><div class="logo">🎓 <span>Student Portal</span></div>
+<nav><a href="dashboard.html">🏠 Dashboard</a><a href="profile.html">👤 Profile</a><a href="attendance.html">📅 Attendance</a><a href="marks.html">📊 Marks</a><a class="active" href="timetable.html">🕒 Timetable</a><a href="assignments.html">📚 Assignments</a>
+      <a href="notices.html">📢 Notices</a>
+      <a href="id-card.html">🪪 ID Card</a></nav>
+<button class="logout" onclick="logout()">↪ Logout</button></aside>
+<main class="main"><header class="topbar"><button class="menu-btn" onclick="toggleSidebar()">☰</button><div><h2>Timetable</h2><span class="muted">Weekly class schedule</span></div><div class="user-chip">👤 <span id="navName">Student</span></div></header>
+<div class="card"><div class="table-wrap"><table><thead><tr><th>Day</th><th>9:00–10:00</th><th>10:00–11:00</th><th>11:15–12:15</th><th>1:00–2:00</th><th>2:00–3:00</th></tr></thead><tbody>
+<tr><td>Monday</td><td>CN</td><td>Java</td><td>DBMS</td><td>OS</td><td>Lab</td></tr>
+<tr><td>Tuesday</td><td>Python</td><td>CN</td><td>SE</td><td>Java</td><td>Lab</td></tr>
+<tr><td>Wednesday</td><td>DBMS</td><td>OS</td><td>Java</td><td>CN</td><td>Project</td></tr>
+<tr><td>Thursday</td><td>SE</td><td>Python</td><td>DBMS</td><td>Lab</td><td>CN</td></tr>
+<tr><td>Friday</td><td>Java</td><td>OS</td><td>CN</td><td>DBMS</td><td>Project</td></tr>
+<tr><td>Saturday</td><td>Python</td><td>SE</td><td>Project</td><td>—</td><td>—</td></tr>
+</tbody></table></div></div></main></div>
+<script src="js/app.js"></script>
+</body></html>

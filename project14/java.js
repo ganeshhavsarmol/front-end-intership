@@ -75,13 +75,13 @@
 
 // TASK 8
 
-// let price = [100, 250,500]
-// function ganesh(price){
-//     price.map((item,index)=>{
-//      console.log("₹"+item);
-//       })
-// }
-// ganesh(price)
+let price = [100, 250,500]
+function ganesh(price){
+    price.map((item,index)=>{
+     console.log("₹"+item);
+      })
+}
+ganesh(price)
 
 // TASK 9
 

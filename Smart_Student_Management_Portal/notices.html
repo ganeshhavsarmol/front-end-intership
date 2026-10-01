@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notices | Student Portal</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<div class="app"><aside class="sidebar" id="sidebar"><div class="logo">🎓 <span>Student Portal</span></div>
+<nav><a href="dashboard.html">🏠 Dashboard</a><a href="profile.html">👤 Profile</a><a href="attendance.html">📅 Attendance</a><a href="marks.html">📊 Marks</a><a href="timetable.html">🕒 Timetable</a><a class="active" href="notices.html">📢 Notices</a></nav>
+<button class="logout" onclick="logout()">↪ Logout</button></aside>
+<main class="main"><header class="topbar"><button class="menu-btn" onclick="toggleSidebar()">☰</button><div><h2>Notices</h2><span class="muted">College announcements</span></div><div class="user-chip">👤 <span id="navName">Student</span></div></header>
+<div id="noticeList" class="notice-list"></div></main></div>
+<script src="js/app.js"></script><script src="js/notices.js"></script>
+</body></html>

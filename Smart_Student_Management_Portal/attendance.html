@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attendance | Student Portal</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<div class="app"><aside class="sidebar" id="sidebar"><div class="logo">🎓 <span>Student Portal</span></div>
+<nav><a href="dashboard.html">🏠 Dashboard</a><a href="profile.html">👤 Profile</a><a class="active" href="attendance.html">📅 Attendance</a><a href="marks.html">📊 Marks</a><a href="timetable.html">🕒 Timetable</a><a href="assignments.html">📚 Assignments</a>
+      <a href="notices.html">📢 Notices</a>
+      <a href="id-card.html">🪪 ID Card</a></nav>
+<button class="logout" onclick="logout()">↪ Logout</button></aside>
+<main class="main"><header class="topbar"><button class="menu-btn" onclick="toggleSidebar()">☰</button><div><h2>Attendance</h2><span class="muted">Semester attendance record</span></div><div class="user-chip">👤 <span id="navName">Student</span></div></header>
+<div class="card"><div class="card-head"><h3>Subject-wise Attendance</h3><span class="badge">Minimum target: 75%</span></div>
+<div class="table-wrap"><table><thead><tr><th>Subject</th><th>Present</th><th>Total</th><th>Percentage</th><th>Status</th></tr></thead><tbody id="attendanceTable"></tbody></table></div></div>
+<div class="card"><h3>Attendance Note</h3><p class="muted">This demo stores data in your browser using JavaScript LocalStorage. No server or database is required.</p></div>
+</main></div>
+<script src="js/app.js"></script><script src="js/attendance.js"></script>
+</body></html>

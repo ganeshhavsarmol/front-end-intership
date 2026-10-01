@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Student Portal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="logo">🎓 <span>Student Portal</span></div>
+    <nav>
+      <a class="active" href="dashboard.html">🏠 Dashboard</a>
+      <a href="profile.html">👤 Profile</a>
+      <a href="attendance.html">📅 Attendance</a>
+      <a href="marks.html">📊 Marks</a>
+      <a href="timetable.html">🕒 Timetable</a>
+      <a href="assignments.html">📚 Assignments</a>
+      <a href="notices.html">📢 Notices</a>
+      <a href="id-card.html">🪪 ID Card</a>
+    </nav>
+    <button class="logout" onclick="logout()">↪ Logout</button>
+  </aside>
+  <main class="main">
+    <header class="topbar">
+      <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+      <div>
+        <h2>Dashboard</h2>
+        <span class="muted" id="today"></span>
+      </div>
+      <div class="user-chip">👤 <span id="navName">Student</span></div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <h1>Welcome back, <span id="welcomeName">Student</span> 👋</h1>
+        <p>Here is your academic overview.</p>
+      </div>
+      <a class="btn light" href="profile.html">View Profile</a>
+    </section>
+
+    <section class="stats">
+      <div class="stat-card"><span>Attendance</span><strong id="attendanceStat">0%</strong><small>Overall</small></div>
+      <div class="stat-card"><span>Average Marks</span><strong id="marksStat">0%</strong><small>All subjects</small></div>
+      <div class="stat-card"><span>Subjects</span><strong id="subjectStat">0</strong><small>This semester</small></div>
+      <div class="stat-card"><span>Notices</span><strong id="noticeStat">0</strong><small>Available</small></div>
+    </section>
+
+    <section class="grid-2">
+      <div class="card">
+        <div class="card-head"><h3>Attendance Overview</h3><a href="attendance.html">View all</a></div>
+        <div id="attendancePreview"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>Recent Notices</h3><a href="notices.html">View all</a></div>
+        <div id="noticePreview"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head"><h3>Quick Actions</h3></div>
+      <div class="quick-links">
+        <a href="profile.html">👤 Update Profile</a>
+        <a href="attendance.html">📅 Check Attendance</a>
+        <a href="marks.html">📊 View Marks</a>
+        <a href="timetable.html">🕒 View Timetable</a>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="js/app.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
